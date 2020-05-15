@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+
+    playerScore = 0;
+    computerScore = 0;
+
+    //prompts for user input and forces lowercase to enable if statement in playRound()
+    function humanPlay(){
+        playerSelection = prompt('Rock, Paper, or Scissors?').toLowerCase();
+        return playerSelection;
+    }
+
+
+//randomly picks computer move and returns it
+function computerPlay(){
+
+    let move = ['rock', 'paper', 'scissors'];
+    return moveSelect = move[Math.floor(Math.random() * move.length)];
+}
+
+//checks if else statement for matching condition and updates score & message
+function playRound(playerSelection, computerSelection){
+
+   if((playerSelection === 'rock' && computerSelection === 'scissors') ||
+   (playerSelection === 'scissors' && computerSelection === 'paper') ||
+   (playerSelection === 'paper' && computerSelection === 'rock')){
+       console.log("You won the round!");
+       return playerScore++;
+   } else if ((playerSelection === 'scissors' && computerSelection === 'rock') ||
+   (playerSelection === 'rock' && computerSelection === 'paper') ||
+   (playerSelection === 'paper' && computerSelection === 'scissors')){
+       console.log("You lost the round!")
+       return computerScore++
+   } else if (playerSelection === computerSelection){
+       console.log("You tied the round");
+   } else {
+       console.log("invalid input");
+   }
+}
+
+ //shows total score after each round
+ function keepScore() {
+                console.log(`You: ${playerScore} | Computer: ${computerScore}`);
+            }
+
+//repeat playRound() 5 times
+function game(){
+    for(var i = 0; i < 5; i++){
+        playRound(humanPlay(), computerPlay());
+        keepScore();   
+    }
+}
+
+//run game
+game();
+
+
+
+
+
+
+</script>
+
+
+</body>
+</html>
